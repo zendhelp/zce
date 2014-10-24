@@ -54,6 +54,13 @@ $arr2[0]++;
 /* $a == 2, $arr == array(2) */
 /* The contents of $arr are changed even though it's not a reference! */
 
+
+class C {}
+
+/* The following line generates the following error message:
+ * Deprecated: Assigning the return value of new by reference is deprecated in...
+ */
+$o = &new C;
 ?>
 </pre>
 <?php require_once '../../includes/footer.php'; ?>
