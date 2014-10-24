@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/base.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+</head>
+<body>
+<div id="layout">
+<section id="layout-content">
+
+<table class="doctable table">
+<caption><strong>Operator Precedence</strong></caption>
+
+<thead>
+<tr>
+    <th>Associativity</th>
+    <th>Operators</th>
+    <th>Additional Information</th>
+</tr>
+
+</thead>
+
+<tbody class="tbody">
+<tr>
+    <td>non-associative</td>
+    <td>
+        <em>clone</em>
+        <em>new</em>
+    </td>
+    <td><a href="language.oop5.cloning.php" class="link">clone</a> and <a href="language.oop5.basic.php#language.oop5.basic.new" class="link">new</a></td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>[</em></td>
+    <td><span class="function"><a href="function.array.php" class="function">array()</a></span></td>
+</tr>
+
+<tr>
+    <td>right</td>
+    <td><em>**</em></td>
+    <td><a href="language.operators.arithmetic.php" class="link">arithmetic</a></td>
+</tr>
+
+<tr>
+    <td>right</td>
+    <td>
+        <em>++</em>
+        <em>--</em>
+        <em>~</em>
+        <em>(int)</em>
+        <em>(float)</em>
+        <em>(string)</em>
+        <em>(array)</em>
+        <em>(object)</em>
+        <em>(bool)</em>
+        <em>@</em>
+    </td>
+    <td>
+        <a href="language.types.php" class="link">types</a> and <a href="language.operators.increment.php" class="link">increment/decrement</a>
+    </td>
+</tr>
+
+<tr>
+    <td>non-associative</td>
+    <td><em>instanceof</em></td>
+    <td>
+        <a href="language.types.php" class="link">types</a>
+    </td>
+</tr>
+
+<tr>
+    <td>right</td>
+    <td><em>!</em></td>
+    <td>
+        <a href="language.operators.logical.php" class="link">logical</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td>
+        <em>*</em>
+        <em>/</em>
+        <em>%</em>
+    </td>
+    <td>
+        <a href="language.operators.arithmetic.php" class="link">arithmetic</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td>
+        <em>+</em>
+        <em>-</em>
+        <em>.</em>
+    </td>
+    <td>
+        <a href="language.operators.arithmetic.php" class="link">arithmetic</a> and
+        <a href="language.operators.string.php" class="link">string</a></td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td>
+        <em>&lt;&lt;</em>
+        <em>&gt;&gt;</em>
+    </td>
+    <td>
+        <a href="language.operators.bitwise.php" class="link">bitwise</a>
+    </td>
+</tr>
+
+<tr>
+    <td>non-associative</td>
+    <td>
+        <em>&lt;</em>
+        <em>&lt;=</em>
+        <em>&gt;</em>
+        <em>&gt;=</em>
+    </td>
+    <td>
+        <a href="language.operators.comparison.php" class="link">comparison</a>
+    </td>
+</tr>
+
+<tr>
+    <td>non-associative</td>
+    <td>
+        <em>==</em>
+        <em>!=</em>
+        <em>===</em>
+        <em>!==</em>
+        <em>&lt;&gt;</em>
+    </td>
+    <td>
+        <a href="language.operators.comparison.php" class="link">comparison</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>&amp;</em></td>
+    <td>
+        <a href="language.operators.bitwise.php" class="link">bitwise</a> and
+        <a href="language.references.php" class="link">references</a></td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>^</em></td>
+    <td>
+        <a href="language.operators.bitwise.php" class="link">bitwise</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>|</em></td>
+    <td>
+        <a href="language.operators.bitwise.php" class="link">bitwise</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>&amp;&amp;</em></td>
+    <td>
+        <a href="language.operators.logical.php" class="link">logical</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>||</em></td>
+    <td>
+        <a href="language.operators.logical.php" class="link">logical</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>? :</em></td>
+    <td>
+        <a href="language.operators.comparison.php#language.operators.comparison.ternary" class="link">ternary</a>
+    </td>
+</tr>
+
+<tr>
+    <td>right</td>
+    <td>
+        <em>=</em>
+        <em>+=</em>
+        <em>-=</em>
+        <em>*=</em>
+        <em>**=</em>
+        <em>/=</em>
+        <em>.=</em>
+        <em>%=</em>
+        <em>&amp;=</em>
+        <em>|=</em>
+        <em>^=</em>
+        <em>&lt;&lt;=</em>
+        <em>&gt;&gt;=</em>
+        <em>=&gt;</em>
+    </td>
+    <td>
+        <a href="language.operators.assignment.php" class="link">assignment</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>and</em></td>
+    <td>
+        <a href="language.operators.logical.php" class="link">logical</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>xor</em></td>
+    <td>
+        <a href="language.operators.logical.php" class="link">logical</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>or</em></td>
+    <td>
+        <a href="language.operators.logical.php" class="link">logical</a>
+    </td>
+</tr>
+
+<tr>
+    <td>left</td>
+    <td><em>,</em></td>
+    <td>many uses</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+</div>
+</body>
+</html>
