@@ -58,7 +58,7 @@ function foo(&$var)
 
 $a=5;
 foo($a);
-echo $a."\n";
+echo $a."\n"; //6
 
 
 /**
