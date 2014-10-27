@@ -1,155 +1,53 @@
 <?php require_once '../../includes/header.php'; ?>
 <pre>
 <?php
+// Valid constant names
+define("DOO",     "something");
+define("FOO",     "something");
+define("FOO2",    "something else");
+define("FOO_BAR", "something more");
 
-echo 'this is a simple string';
+define("CONSTANT", "Hello world.");
+echo CONSTANT."\n"; // outputs "Hello world."
+echo Constant."\n"; // outputs "Constant" and issues a notice.
 
-echo 'You can also have embedded newlines in
-strings this way as it is
-okay to do';
+define("GREETING", "Hello you.", true);
+echo GREETING."\n"; // outputs "Hello you."
+echo Greeting."\n"; // outputs "Hello you."
 
-// Outputs: Arnold once said: "I'll be back"
-echo 'Arnold once said: "I\'ll be back"';
+// Invalid constant names
+define("2FOO",    "something");
 
-// Outputs: You deleted C:\*.*?
-echo 'You deleted C:\\*.*?';
-
-// Outputs: You deleted C:\*.*?
-echo 'You deleted C:\*.*?';
-
-// Outputs: This will not expand: \n a newline
-echo 'This will not expand: \n a newline';
-
-// Outputs: Variables do not $expand $either
-echo 'Variables do not $expand $either';
-
-
-
-//The closing heredoc tag mus be the first thing on the line
-/*
-$bar = <<<EOT
-bar
-    EOT;
-*/
-
-//Heredocs can not be used for initializing class properties.
-//Since PHP 5.3, this limitation is valid only for heredocs containing variables.
-/*
-class foo {
-    public $bar = <<<EOT
-bar
-    EOT;
-}
-*/
-
-$str = <<<EOD
-Example of string
-spanning multiple lines
-using heredoc syntax.
-EOD;
+// This is valid, but should be avoided:
+// PHP may one day provide a magical constant
+// that will break your script
+define("__FOO__", "something");
+echo constant('__FOO__');   //something
 
 
-//Example #2 Heredoc string quoting example
-/* More complex example, with variables. */
-class foo
-{
-    var $foo;
-    var $bar;
+echo "constant()\n";
+var_dump(constant('I_DONT_EXIST')); //warning "Couldn't find constant I_DONT_EXIST"
+var_dump(constant('FALSE'));        //no warning, output: bool(false)
+define('FALSE', TRUE);
+var_dump(constant('FALSE'));        //output: bool(true)
+var_dump(constant(FALSE));          //warning "Couldn't find constant
+// but...
+var_dump(constant('false'));        // output: bool(false)
+var_dump(FALSE);                    // output: bool(false);
 
-    function foo()
-    {
-        $this->foo = 'Foo';
-        $this->bar = array('Bar1', 'Bar2', 'Bar3');
-    }
+
+define(TRUE, FALSE);
+var_dump(constant('TRUE'));        // output: bool(true)
+echo TRUE."\n";
+
+
+if(1) {
+    define("IFBLOCK", 1);
+    echo IFBLOCK."\n";
 }
 
-$foo = new foo();
-$name = 'MyName';
-
-echo <<<EOT
-My name is "$name". I am printing some $foo->foo.
-Now, I am printing some {$foo->bar[1]}.
-This should print a capital 'A': \x41
-EOT;
-
-/*
-My name is "MyName". I am printing some Foo.
-Now, I am printing some Bar2.
-This should print a capital 'A': A
-*/
-
-//Example #3 Heredoc in arguments example
-var_dump(array(<<<EOD
-foobar!
-EOD
-));
-
-
-//As of PHP 5.3.0, it's possible to initialize static variables and class properties/constants using the Heredoc syntax:
-//Example #4 Using Heredoc to initialize static values
-// Static variables
-function foo4()
-{
-    static $bar = <<<LABEL
-Nothing in here...
-LABEL;
-}
-
-// Class properties/constants
-class foo5
-{
-    const BAR = <<<FOOBAR
-Constant example
-FOOBAR;
-
-    public $baz = <<<FOOBAR
-Property example
-FOOBAR;
-}
-
-//Starting with PHP 5.3.0, the opening Heredoc identifier may optionally be enclosed in double quotes:
-//Example #5 Using double quotes in Heredoc
-echo <<<"FOOBAR"
-Hello World!
-FOOBAR;
-
-
-
-//Now docs
-$str = <<<'EOD'
-Example of string
-spanning multiple lines
-using nowdoc syntax.
-EOD;
-
-/* More complex example, with variables. */
-class foo
-{
-    public $foo;
-    public $bar;
-
-    function foo()
-    {
-        $this->foo = 'Foo';
-        $this->bar = array('Bar1', 'Bar2', 'Bar3');
-    }
-}
-
-$foo = new foo();
-$name = 'MyName';
-
-echo <<<'EOT'
-My name is "$name". I am printing some $foo->foo.
-Now, I am printing some {$foo->bar[1]}.
-This should not print a capital 'A': \x41
-EOT;
-
-/*
-My name is "$name". I am printing some $foo->foo.
-Now, I am printing some {$foo->bar[1]}.
-This should not print a capital 'A': \x41
-*/
-
+define("ADDITIONAL", 1+2);
+echo ADDITIONAL."\n";
 
 ?>
 </pre>
