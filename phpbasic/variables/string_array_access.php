@@ -23,17 +23,17 @@ $str[strlen($str)-1] = 'e';
 
 $str = 'abc';
 
-var_dump($str['1']);
-var_dump(isset($str['1']));
+var_dump($str['1']);                //b
+var_dump(isset($str['1']));         //true
 
-var_dump($str['1.0']);
-var_dump(isset($str['1.0']));
+var_dump($str['1.0']);              //b
+var_dump(isset($str['1.0']));       //false
 
-var_dump($str['x']);
-var_dump(isset($str['x']));
+var_dump($str['x']);                //a
+var_dump(isset($str['x']));         //false
 
-var_dump($str['1x']);
-var_dump(isset($str['1x']));
+var_dump($str['1x']);               //b
+var_dump(isset($str['1x']));        //false
 
 /*
 //Output of the above example in PHP 5.3:

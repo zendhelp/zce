@@ -3,8 +3,12 @@
 <?php
 $a = 'hello';
 $$a = 'world';
+$$$a = 'bim';
+//$$$$$a = 'unknow';  //Notice:  Undefined variable: bim
 echo "$a ${$a} \n";   //hello world
 echo "$a $hello \n";  //hello world
+echo "$a $world \n";  //hello world
+
 
 
 echo " Variable property example\n";
