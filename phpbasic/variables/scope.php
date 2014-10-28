@@ -1,155 +1,93 @@
 <?php require_once '../../includes/header.php'; ?>
 <pre>
 <?php
-
-echo 'this is a simple string';
-
-echo 'You can also have embedded newlines in
-strings this way as it is
-okay to do';
-
-// Outputs: Arnold once said: "I'll be back"
-echo 'Arnold once said: "I\'ll be back"';
-
-// Outputs: You deleted C:\*.*?
-echo 'You deleted C:\\*.*?';
-
-// Outputs: You deleted C:\*.*?
-echo 'You deleted C:\*.*?';
-
-// Outputs: This will not expand: \n a newline
-echo 'This will not expand: \n a newline';
-
-// Outputs: Variables do not $expand $either
-echo 'Variables do not $expand $either';
+$a = 1;
+include 'b.inc';
 
 
-
-//The closing heredoc tag mus be the first thing on the line
-/*
-$bar = <<<EOT
-bar
-    EOT;
-*/
-
-//Heredocs can not be used for initializing class properties.
-//Since PHP 5.3, this limitation is valid only for heredocs containing variables.
-/*
-class foo {
-    public $bar = <<<EOT
-bar
-    EOT;
-}
-*/
-
-$str = <<<EOD
-Example of string
-spanning multiple lines
-using heredoc syntax.
-EOD;
-
-
-//Example #2 Heredoc string quoting example
-/* More complex example, with variables. */
-class foo
+$a = 1; /* global scope */
+function test()
 {
-    var $foo;
-    var $bar;
-
-    function foo()
-    {
-        $this->foo = 'Foo';
-        $this->bar = array('Bar1', 'Bar2', 'Bar3');
-    }
+  echo $a; /* Undefined variable: - reference to local scope variable */
 }
-
-$foo = new foo();
-$name = 'MyName';
-
-echo <<<EOT
-My name is "$name". I am printing some $foo->foo.
-Now, I am printing some {$foo->bar[1]}.
-This should print a capital 'A': \x41
-EOT;
-
-/*
-My name is "MyName". I am printing some Foo.
-Now, I am printing some Bar2.
-This should print a capital 'A': A
-*/
-
-//Example #3 Heredoc in arguments example
-var_dump(array(<<<EOD
-foobar!
-EOD
-));
+test();
 
 
-//As of PHP 5.3.0, it's possible to initialize static variables and class properties/constants using the Heredoc syntax:
-//Example #4 Using Heredoc to initialize static values
-// Static variables
-function foo4()
+
+echo "The global keyword\n";
+$a = 1;
+$b = 2;
+
+function Sum()
 {
-    static $bar = <<<LABEL
-Nothing in here...
-LABEL;
+  global $a, $b;
+
+  $b = $a + $b;
 }
 
-// Class properties/constants
-class foo5
+Sum();
+echo "$b\n";  //3
+
+
+echo "Instead of global\n";
+$a = 1;
+$b = 2;
+
+function Sum2()
 {
-    const BAR = <<<FOOBAR
-Constant example
-FOOBAR;
-
-    public $baz = <<<FOOBAR
-Property example
-FOOBAR;
+  $GLOBALS['b'] = $GLOBALS['a'] + $GLOBALS['b'];
 }
 
-//Starting with PHP 5.3.0, the opening Heredoc identifier may optionally be enclosed in double quotes:
-//Example #5 Using double quotes in Heredoc
-echo <<<"FOOBAR"
-Hello World!
-FOOBAR;
+Sum2();
+echo $b;  //3
 
 
 
-//Now docs
-$str = <<<'EOD'
-Example of string
-spanning multiple lines
-using nowdoc syntax.
-EOD;
-
-/* More complex example, with variables. */
-class foo
+echo "Example demonstrating superglobals and scope\n";
+function test_global()
 {
-    public $foo;
-    public $bar;
+  // Most predefined variables aren't "super" and require
+  // 'global' to be available to the functions local scope.
+  global $HTTP_POST_VARS;
 
-    function foo()
-    {
-        $this->foo = 'Foo';
-        $this->bar = array('Bar1', 'Bar2', 'Bar3');
-    }
+  echo $HTTP_POST_VARS['name'];
+
+  // Superglobals are available in any scope and do
+  // not require 'global'. Superglobals are available
+  // as of PHP 4.1.0, and HTTP_POST_VARS is now
+  // deemed deprecated.
+  echo $_POST['name'];
 }
 
-$foo = new foo();
-$name = 'MyName';
 
-echo <<<'EOT'
-My name is "$name". I am printing some $foo->foo.
-Now, I am printing some {$foo->bar[1]}.
-This should not print a capital 'A': \x41
-EOT;
 
-/*
-My name is "$name". I am printing some $foo->foo.
-Now, I am printing some {$foo->bar[1]}.
-This should not print a capital 'A': \x41
-*/
+echo "Declaring static variables\n";
+function foo(){
+    static $int = 0;          // correct
+    static $int = 1+2;        // wrong  (as it is an expression)
+    static $int = sqrt(121);  // wrong  (as it is an expression too)
 
+    $int++;
+    echo $int;
+}
+
+
+
+echo "References with global and static variables\n";
+function test_global_ref() {
+  global $obj;
+  $obj = &new stdclass;
+}
+
+function test_global_noref() {
+  global $obj;
+  $obj = new stdclass;
+}
+
+test_global_ref();
+var_dump($obj); //NULL
+test_global_noref();
+var_dump($obj); //object(stdClass)(0) {}
 
 ?>
 </pre>
