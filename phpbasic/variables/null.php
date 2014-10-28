@@ -9,7 +9,7 @@ var_dump($var);
 $a = 10;
 var_dump($a);
 unset($a);
-var_dump($a);
+var_dump($a); //Undefined variable - NULL
 ?>
 </pre>
 <?php require_once '../../includes/footer.php'; ?>

@@ -37,7 +37,7 @@ var_dump(FALSE);                    // output: bool(false);
 
 
 define(TRUE, FALSE);
-var_dump(constant('TRUE'));        // output: bool(true)
+var_dump(constant('TRUE'));        // output: bool(false)
 echo TRUE."\n";
 
 

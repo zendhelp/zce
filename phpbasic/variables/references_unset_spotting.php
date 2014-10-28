@@ -6,8 +6,8 @@
 $a = 1;
 $b =& $a;
 unset($a);
-echo $a."\n";
-echo $b."\n";
+echo $a."\n"; //Undefined variable
+echo $b."\n"; /1
 
 echo "Spotting References \n";
 

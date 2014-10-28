@@ -16,6 +16,10 @@ var_dump((int) (25/7)); // int(3)
 var_dump(round(25/7));  // float(4)
 
 var_dump(01090); // 010 octal = 8 decimal
+var_dump(010); // 010 octal = 8 decimal
+var_dump(01); // 1
+var_dump(017); // 001111 = 15
+var_dump(0191); // 01 = 1
 
 //Never cast an unknown fraction to integer, as this can sometimes lead to unexpected results.
 echo (int) ( (0.1+0.7) * 10 ); // echo 7!
