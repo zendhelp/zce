@@ -57,6 +57,12 @@ c: eval("goto c;"); // 'goto' to undefined label 'c'
 eval("c: goto c;"); // works
 
 
+C:
+echo "C\n";
+//Fatal error:  'goto' to undefined label 'c'
+//goto C;
+
+
 
 
 ?>
