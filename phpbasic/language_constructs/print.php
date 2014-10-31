@@ -54,6 +54,30 @@ if (print "aaa" && print "bbb") {
   echo "TRUE\n";
 }
 
+//TRUE
+if (print "0" && print "bbb") {
+  echo "TRUE\n";
+}
+
+//01TRUE
+if (print "bbb" && print "0") {
+  echo "TRUE\n";
+}
+
+//TRUE
+if (print false && print "bbb") {
+  echo "TRUE\n";
+}
+
+//1TRUE
+if (print 'bbb' && print false) {
+  echo "TRUE\n";
+}
+
+//11TRUE
+if (print 'bbb' && print true) {
+  echo "TRUE\n";
+}
 ?>
 </pre>
 <?php require_once '../../includes/footer.php'; ?>
