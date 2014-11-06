@@ -110,6 +110,30 @@ Argument 0 is: 1<br />
 Argument 1 is: 2<br />
 Argument 2 is: 3<br />
  */
+
+
+function test($sum)
+{
+  $acc = 0;
+  foreach (func_get_args() as $n) {
+    $acc += $n;
+  }
+  return $acc;
+}
+
+echo "\n";
+echo test(1, 2, 3 ,4);
+echo "\n";
+
+
+function test2($sum, $sum2)
+{
+  return $sum;
+}
+
+//print 1
+echo test2(1);    //Warning:  Missing argument 2 for test2()
+
 ?>
 </pre>
 <?php require_once '../includes/footer.php'; ?>
