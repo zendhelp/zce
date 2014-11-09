@@ -21,7 +21,11 @@ echo $sxe->title."\n";
 
 //Create a SimpleXMLElement object from a URL
 $sxe = new SimpleXMLElement('../xmlfiles/example.xml', NULL, TRUE);
-echo $sxe->movie[0]->title;
+echo $sxe->movie[0]->title."\n";
+
+//Create a SimpleXMLElement object from a URL
+$sxe = new SimpleXMLElement('../xmlfiles/example.xml', NULL, TRUE, 'NS');
+print_r($sxe);
 
 ?>
 </pre>
