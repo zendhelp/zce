@@ -26,3 +26,14 @@ comment
 /* this is also
 commented */ but this not - parse error T_STRING */
 ?>
+
+<?php
+//<?xml version="1.0" encoding="utf-8"?>
+?>
+
+
+<?php
+/*
+ * <?xml version="1.0" encoding="utf-8"?>
+ */
+?>
